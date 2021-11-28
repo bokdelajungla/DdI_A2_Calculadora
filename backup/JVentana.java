@@ -1,4 +1,4 @@
-package gui;
+package requerimiento2.vista;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -7,13 +7,24 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import requerimiento2.controlador.GestorEventos;
+
+/**
+ * Clase que implementa el display de una calculadora
+ * Repositorio de la actividad: https://github.com/bokdelajungla/DdI_A2_Calculadora
+ * @author Grupo 18
+ * @version 1.0
+ */
 public class JVentana extends JFrame {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private JTexto txt;
 	private String oper;
 	private String num1, num2;
 	private double res;
 	private boolean operPulsada;
+	private boolean igualPulsado=false;
 	private boolean puedeOperar;
 	private boolean esOscuro;
 	private int contComas1, contComas2;
@@ -21,16 +32,17 @@ public class JVentana extends JFrame {
 	private final String PASSWORD = "password";
 	private JBotonNumero[] numero = new JBotonNumero[10];
 	private JBotonOperacion bdel, bsuma, bresta, bmult, bdiv, braiz, braiz3, bcoma, bequal, bmode;
+	private GestorEventos gestor;
+	
 	
 	public JVentana() {
 		super("Calculadora");
-		this.setBounds(200, 200, 220, 380);
+		this.setBounds(200, 200, 235, 395);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		initComponentes();
-		initEventos();
 		
-		getContentPane().setBackground(Color.decode("#bffbff"));
+		getContentPane().setBackground(Color.decode("#bfbfbf"));
 		setLayout(null);
 		setVisible(true);
 		setResizable(false);
@@ -72,10 +84,10 @@ public class JVentana extends JFrame {
 		bmult = new JBotonOperacion("x", 160, 250);
 		bdiv = new JBotonOperacion("÷", 160, 300);
 		braiz = new JBotonOperacion("√", 60, 250);
-		braiz3 = new JBotonOperacion("∛", 110, 250);
+		braiz3 = new JBotonOperacion("3√", 110, 250);
 		bcoma = new JBotonOperacion(",", 60, 300);
 		bequal = new JBotonOperacion("=", 110, 300);
-		bmode = new JBotonOperacion("❐", 10, 300);
+		bmode = new JBotonOperacion("mod", 10, 300);
 		
 		add(bdel);
 		add(bsuma);
@@ -89,14 +101,37 @@ public class JVentana extends JFrame {
 		add(bmode);
 	}
 	
-	private void initEventos() {
+	private void initEventos(GestorEventos gestor) {
+		/*
+		numero[0].addActionListener(gestor);
+		numero[1].addActionListener(gestor);
+		numero[2].addActionListener(gestor);
+		numero[3].addActionListener(gestor);
+		numero[4].addActionListener(gestor);
+		numero[5].addActionListener(gestor);
+		numero[6].addActionListener(gestor);
+		numero[7].addActionListener(gestor);
+		numero[8].addActionListener(gestor);
+		numero[9].addActionListener(gestor);
+		bdel.addActionListener(gestor);
+		bsuma.addActionListener(gestor);
+		bresta.addActionListener(gestor);
+		bmult.addActionListener(gestor);
+		bdiv.addActionListener(gestor);
+		braiz.addActionListener(gestor);
+		braiz3.addActionListener(gestor);
+		bcoma.addActionListener(gestor);
+		bequal.addActionListener(gestor);
+		bmode.addActionListener(gestor);
+		*/
+		
 		ActionListener ev0 = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(!operPulsada) {
+				if(!operPulsada&&!igualPulsado) {
 					num1+="0";
 					txt.setText(num1);
-				} else {
+				}else if (operPulsada&&!igualPulsado){
 					num2+="0";
 					txt.setText(num2);
 				}
@@ -105,10 +140,10 @@ public class JVentana extends JFrame {
 		ActionListener ev1 = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(!operPulsada) {
+				if(!operPulsada&&!igualPulsado) {
 					num1+="1";
 					txt.setText(num1);
-				} else {
+				}else if (operPulsada&&!igualPulsado){
 					num2+="1";
 					txt.setText(num2);
 				}
@@ -117,10 +152,10 @@ public class JVentana extends JFrame {
 		ActionListener ev2 = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(!operPulsada) {
+				if(!operPulsada&&!igualPulsado) {
 					num1+="2";
 					txt.setText(num1);
-				} else {
+				}else if (operPulsada&&!igualPulsado){
 					num2+="2";
 					txt.setText(num2);
 				}
@@ -129,10 +164,10 @@ public class JVentana extends JFrame {
 		ActionListener ev3 = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(!operPulsada) {
+				if(!operPulsada&&!igualPulsado) {
 					num1+="3";
 					txt.setText(num1);
-				} else {
+				}else if (operPulsada&&!igualPulsado){
 					num2+="3";
 					txt.setText(num2);
 				}
@@ -141,10 +176,10 @@ public class JVentana extends JFrame {
 		ActionListener ev4 = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(!operPulsada) {
+				if(!operPulsada&&!igualPulsado) {
 					num1+="4";
 					txt.setText(num1);
-				} else {
+				}else if (operPulsada&&!igualPulsado){
 					num2+="4";
 					txt.setText(num2);
 				}
@@ -153,10 +188,10 @@ public class JVentana extends JFrame {
 		ActionListener ev5 = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(!operPulsada) {
+				if(!operPulsada&&!igualPulsado) {
 					num1+="5";
 					txt.setText(num1);
-				} else {
+				}else if (operPulsada&&!igualPulsado){
 					num2+="5";
 					txt.setText(num2);
 				}
@@ -165,10 +200,10 @@ public class JVentana extends JFrame {
 		ActionListener ev6 = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(!operPulsada) {
+				if(!operPulsada&&!igualPulsado) {
 					num1+="6";
 					txt.setText(num1);
-				} else {
+				}else if (operPulsada&&!igualPulsado){
 					num2+="6";
 					txt.setText(num2);
 				}
@@ -177,10 +212,10 @@ public class JVentana extends JFrame {
 		ActionListener ev7 = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(!operPulsada) {
+				if(!operPulsada&&!igualPulsado) {
 					num1+="7";
 					txt.setText(num1);
-				} else {
+				}else if (operPulsada&&!igualPulsado){
 					num2+="7";
 					txt.setText(num2);
 				}
@@ -189,10 +224,10 @@ public class JVentana extends JFrame {
 		ActionListener ev8 = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(!operPulsada) {
+				if(!operPulsada&&!igualPulsado) {
 					num1+="8";
 					txt.setText(num1);
-				} else {
+				}else if (operPulsada&&!igualPulsado){
 					num2+="8";
 					txt.setText(num2);
 				}
@@ -201,16 +236,16 @@ public class JVentana extends JFrame {
 		ActionListener ev9 = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(!operPulsada) {
+				if(!operPulsada&&!igualPulsado) {
 					num1+="9";
 					txt.setText(num1);
-				} else {
+				}else if (operPulsada&&!igualPulsado){
 					num2+="9";
 					txt.setText(num2);
 				}
 			}
 		};
-		
+
 		numero[0].addActionListener(ev0);
 		numero[1].addActionListener(ev1);
 		numero[2].addActionListener(ev2);
@@ -221,10 +256,11 @@ public class JVentana extends JFrame {
 		numero[7].addActionListener(ev7);
 		numero[8].addActionListener(ev8);
 		numero[9].addActionListener(ev9);
-		
+
 		ActionListener suma = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				igualPulsado=false;
 				oper="+";
 				operPulsada = true;
 			}
@@ -234,6 +270,7 @@ public class JVentana extends JFrame {
 		ActionListener resta = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				igualPulsado=false;
 				oper="-";
 				operPulsada = true;
 			}
@@ -243,6 +280,7 @@ public class JVentana extends JFrame {
 		ActionListener mult = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				igualPulsado=false;
 				oper="*";
 				operPulsada = true;
 			}
@@ -252,6 +290,7 @@ public class JVentana extends JFrame {
 		ActionListener div = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				igualPulsado=false;
 				oper="/";
 				operPulsada = true;
 			}
@@ -289,6 +328,7 @@ public class JVentana extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				reset();
+				igualPulsado=false;
 				num1 = "";
 				txt.setText(num1);
 			}
@@ -327,6 +367,7 @@ public class JVentana extends JFrame {
 						JOptionPane.showMessageDialog(new JFrame(), "Falta el operando!!",
 								"Number missing", JOptionPane.ERROR_MESSAGE);
 					}
+					igualPulsado=true;
 					res = Math.cbrt(Double.parseDouble(num1));
 					txt.setText(Double.toString(res));
 					reset();
@@ -338,6 +379,7 @@ public class JVentana extends JFrame {
 		ActionListener igual = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				if(num1.equals("") || num2.equals("")) {
 					JOptionPane.showMessageDialog(new JFrame(), "Falta un operando!!",
 							"Number missing", JOptionPane.ERROR_MESSAGE);
@@ -345,24 +387,28 @@ public class JVentana extends JFrame {
 					JOptionPane.showMessageDialog(new JFrame(), "Falta la operación!!",
 							"Operator missing", JOptionPane.ERROR_MESSAGE);
 				} else if(oper.equals("+")) {
+					igualPulsado = true;
 					res = Double.parseDouble(num1) + Double.parseDouble(num2);
-					txt.setText(Double.toString(res));
+					//txt.setText(Double.toString(res));
 					reset();
 				} else if(oper.equals("-")) {
+					igualPulsado = true;
 					res = Double.parseDouble(num1) - Double.parseDouble(num2);
-					txt.setText(Double.toString(res));
+					//txt.setText(Double.toString(res));
 					reset();
 				} else if(oper.equals("*")) {
+					igualPulsado = true;
 					res = Double.parseDouble(num1) * Double.parseDouble(num2);
-					txt.setText(Double.toString(res));
+					//txt.setText(Double.toString(res));
 					reset();
 				} else if(oper.equals("/")) {			
 					if(num2.equals("0")) {
 						JOptionPane.showMessageDialog(new JFrame(), "No dividas entre cero!!!",
 								"Division by zero", JOptionPane.ERROR_MESSAGE);
 					} else {
+						igualPulsado = true;
 						res = Double.parseDouble(num1) / Double.parseDouble(num2);
-						txt.setText(Double.toString(res));
+						//txt.setText(Double.toString(res));
 						reset();
 					}
 				}
@@ -387,6 +433,8 @@ public class JVentana extends JFrame {
 		};
 		bmode.addActionListener(modo);
 	}
+
+
 	private void reset() {
 		operPulsada = false;
 		num1 = Double.toString(res);
@@ -397,9 +445,12 @@ public class JVentana extends JFrame {
 		contComas2 = 0;
 	}
 	
+	/**
+	 * Cambia entre modo claro/oscuro
+	 */
 	private void changeMode() {
 		if (esOscuro) {
-			getContentPane().setBackground(Color.decode("#bffbff"));
+			getContentPane().setBackground(Color.decode("#bfbfbf"));
 			txt.claro();
 			for(int i = 0; i < numero.length; i++) {
 				numero[i].claro();
@@ -434,5 +485,88 @@ public class JVentana extends JFrame {
 			esOscuro = true;
 		}
 	}
+	
+	//Getters
+	public JBotonNumero[] getNumero() {
+		return numero;
+	}
+
+	public JBotonOperacion getBdel() {
+		return bdel;
+	}
+
+	public JBotonOperacion getBsuma() {
+		return bsuma;
+	}
+
+	public JBotonOperacion getBresta() {
+		return bresta;
+	}
+
+	public JBotonOperacion getBmult() {
+		return bmult;
+	}
+
+	public JBotonOperacion getBdiv() {
+		return bdiv;
+	}
+
+	public JBotonOperacion getBraiz() {
+		return braiz;
+	}
+
+	public JBotonOperacion getBraiz3() {
+		return braiz3;
+	}
+
+	public JBotonOperacion getBcoma() {
+		return bcoma;
+	}
+
+	public JBotonOperacion getBequal() {
+		return bequal;
+	}
+
+	public JBotonOperacion getBmode() {
+		return bmode;
+	}
+
+	public JTexto getTxt() {
+		return txt;
+	}
+
+	public String getNum1() {
+		return num1;
+	}
+
+	public String getNum2() {
+		return num2;
+	}
+
+	public double getRes() {
+		return res;
+	}
+
+	public boolean isOperPulsada() {
+		return operPulsada;
+	}
+
+	public boolean isIgualPulsado() {
+		return igualPulsado;
+	}
+
+	public boolean isPuedeOperar() {
+		return puedeOperar;
+	}
+
+	public String getPass() {
+		return pass;
+	}
+
+	public String getPASSWORD() {
+		return PASSWORD;
+	}
+	
+	
 	
 }

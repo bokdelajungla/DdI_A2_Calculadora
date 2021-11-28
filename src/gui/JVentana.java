@@ -400,61 +400,37 @@ public class JVentana extends JFrame {
 	private void changeMode() {
 		if (esOscuro) {
 			getContentPane().setBackground(Color.decode("#bffbff"));
-			txt.setBackground(Color.decode("#f5feff"));
-			txt.setForeground(Color.BLACK);
+			txt.claro();
 			for(int i = 0; i < numero.length; i++) {
-				numero[i].setBackground(Color.decode("#bffbff"));
-				numero[i].setForeground(Color.decode("#0095ff"));
+				numero[i].claro();
 			}
-			bdel.setBackground(Color.decode("#bffbff"));
-			bdel.setForeground(Color.decode("#0040ff"));
-			bsuma.setBackground(Color.decode("#bffbff"));
-			bsuma.setForeground(Color.decode("#0040ff"));
-			bresta.setBackground(Color.decode("#bffbff"));
-			bresta.setForeground(Color.decode("#0040ff"));
-			bmult.setBackground(Color.decode("#bffbff"));
-			bmult.setForeground(Color.decode("#0040ff"));
-			bdiv.setBackground(Color.decode("#bffbff"));
-			bdiv.setForeground(Color.decode("#0040ff"));
-			braiz.setBackground(Color.decode("#bffbff"));
-			braiz.setForeground(Color.decode("#0040ff"));
-			braiz3.setBackground(Color.decode("#bffbff"));
-			braiz3.setForeground(Color.decode("#0040ff"));
-			bcoma.setBackground(Color.decode("#bffbff"));
-			bcoma.setForeground(Color.decode("#0040ff"));
-			bequal.setBackground(Color.decode("#bffbff"));
-			bequal.setForeground(Color.decode("#0040ff"));
-			bmode.setBackground(Color.decode("#bffbff"));
-			bmode.setForeground(Color.decode("#0040ff"));
+			bdel.claro();
+			bsuma.claro();
+			bresta.claro();
+			bmult.claro();
+			bdiv.claro();
+			braiz.claro();
+			braiz3.claro();
+			bcoma.claro();
+			bequal.claro();
+			bmode.claro();
 			esOscuro = false;
 		} else {
 			getContentPane().setBackground(Color.decode("#4a4a4a"));
-			txt.setBackground(Color.decode("#303030"));
-			txt.setForeground(Color.decode("#ebebeb"));
+			txt.oscuro();
 			for(int i = 0; i < numero.length; i++) {
-				numero[i].setBackground(Color.decode("#4a4a4a"));
-				numero[i].setForeground(Color.decode("#333333"));
+				numero[i].oscuro();
 			}
-			bdel.setBackground(Color.decode("#4a4a4a"));
-			bdel.setForeground(Color.BLACK);
-			bsuma.setBackground(Color.decode("#4a4a4a"));
-			bsuma.setForeground(Color.BLACK);
-			bresta.setBackground(Color.decode("#4a4a4a"));
-			bresta.setForeground(Color.BLACK);
-			bmult.setBackground(Color.decode("#4a4a4a"));
-			bmult.setForeground(Color.BLACK);
-			bdiv.setBackground(Color.decode("#4a4a4a"));
-			bdiv.setForeground(Color.BLACK);
-			braiz.setBackground(Color.decode("#4a4a4a"));
-			braiz.setForeground(Color.BLACK);
-			braiz3.setBackground(Color.decode("#4a4a4a"));
-			braiz3.setForeground(Color.BLACK);
-			bcoma.setBackground(Color.decode("#4a4a4a"));
-			bcoma.setForeground(Color.BLACK);
-			bequal.setBackground(Color.decode("#4a4a4a"));
-			bequal.setForeground(Color.BLACK);
-			bmode.setBackground(Color.decode("#4a4a4a"));
-			bmode.setForeground(Color.BLACK);
+			bdel.oscuro();
+			bsuma.oscuro();
+			bresta.oscuro();
+			bmult.oscuro();
+			bdiv.oscuro();
+			braiz.oscuro();
+			braiz3.oscuro();
+			bcoma.oscuro();
+			bequal.oscuro();
+			bmode.oscuro();
 			esOscuro = true;
 		}
 	}

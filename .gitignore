@@ -25,3 +25,5 @@ hs_err_pid*
 #Eclipse
 .metadata
 .settings
+.project
+.classpath

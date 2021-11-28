@@ -12,6 +12,8 @@ public class Calculadora {
 
 	public static void main(String[] args) {
 		JVentana ventana = new JVentana();
+		GestorEventos gestor = new GestorEventos(ventana);
+		ventana.initEventos(gestor);
 	}
 
 }

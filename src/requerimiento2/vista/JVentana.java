@@ -1,11 +1,7 @@
 package requerimiento2.vista;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import requerimiento2.controlador.GestorEventos;
 
@@ -32,8 +28,6 @@ public class JVentana extends JFrame {
 	private final String PASSWORD = "password";
 	private JBotonNumero[] numero = new JBotonNumero[10];
 	private JBotonOperacion bdel, bsuma, bresta, bmult, bdiv, braiz, braiz3, bcoma, bequal, bmode;
-	private GestorEventos gestor;
-	
 	
 	public JVentana() {
 		super("Calculadora");
@@ -41,7 +35,6 @@ public class JVentana extends JFrame {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		initComponentes();
-		initEventos();
 		
 		getContentPane().setBackground(Color.decode("#bfbfbf"));
 		setLayout(null);
@@ -102,319 +95,33 @@ public class JVentana extends JFrame {
 		add(bmode);
 	}
 	
-	private void initEventos() {
-		
-		ActionListener ev0 = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(!operPulsada&&!igualPulsado) {
-					num1+="0";
-					txt.setText(num1);
-				}else if (operPulsada&&!igualPulsado){
-					num2+="0";
-					txt.setText(num2);
-				}
-			}
-		};
-		ActionListener ev1 = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(!operPulsada&&!igualPulsado) {
-					num1+="1";
-					txt.setText(num1);
-				}else if (operPulsada&&!igualPulsado){
-					num2+="1";
-					txt.setText(num2);
-				}
-			}
-		};
-		ActionListener ev2 = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(!operPulsada&&!igualPulsado) {
-					num1+="2";
-					txt.setText(num1);
-				}else if (operPulsada&&!igualPulsado){
-					num2+="2";
-					txt.setText(num2);
-				}
-			}
-		};
-		ActionListener ev3 = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(!operPulsada&&!igualPulsado) {
-					num1+="3";
-					txt.setText(num1);
-				}else if (operPulsada&&!igualPulsado){
-					num2+="3";
-					txt.setText(num2);
-				}
-			}
-		};
-		ActionListener ev4 = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(!operPulsada&&!igualPulsado) {
-					num1+="4";
-					txt.setText(num1);
-				}else if (operPulsada&&!igualPulsado){
-					num2+="4";
-					txt.setText(num2);
-				}
-			}
-		};
-		ActionListener ev5 = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(!operPulsada&&!igualPulsado) {
-					num1+="5";
-					txt.setText(num1);
-				}else if (operPulsada&&!igualPulsado){
-					num2+="5";
-					txt.setText(num2);
-				}
-			}
-		};
-		ActionListener ev6 = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(!operPulsada&&!igualPulsado) {
-					num1+="6";
-					txt.setText(num1);
-				}else if (operPulsada&&!igualPulsado){
-					num2+="6";
-					txt.setText(num2);
-				}
-			}
-		};
-		ActionListener ev7 = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(!operPulsada&&!igualPulsado) {
-					num1+="7";
-					txt.setText(num1);
-				}else if (operPulsada&&!igualPulsado){
-					num2+="7";
-					txt.setText(num2);
-				}
-			}
-		};
-		ActionListener ev8 = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(!operPulsada&&!igualPulsado) {
-					num1+="8";
-					txt.setText(num1);
-				}else if (operPulsada&&!igualPulsado){
-					num2+="8";
-					txt.setText(num2);
-				}
-			}
-		};
-		ActionListener ev9 = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(!operPulsada&&!igualPulsado) {
-					num1+="9";
-					txt.setText(num1);
-				}else if (operPulsada&&!igualPulsado){
-					num2+="9";
-					txt.setText(num2);
-				}
-			}
-		};
+	public void initEventos(GestorEventos gestor) {
 
-		numero[0].addActionListener(ev0);
-		numero[1].addActionListener(ev1);
-		numero[2].addActionListener(ev2);
-		numero[3].addActionListener(ev3);
-		numero[4].addActionListener(ev4);
-		numero[5].addActionListener(ev5);
-		numero[6].addActionListener(ev6);
-		numero[7].addActionListener(ev7);
-		numero[8].addActionListener(ev8);
-		numero[9].addActionListener(ev9);
-
-		ActionListener suma = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				igualPulsado=false;
-				oper="+";
-				operPulsada = true;
-			}
-		};
-		bsuma.addActionListener(suma);
-		
-		ActionListener resta = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				igualPulsado=false;
-				oper="-";
-				operPulsada = true;
-			}
-		};
-		bresta.addActionListener(resta);
-		
-		ActionListener mult = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				igualPulsado=false;
-				oper="*";
-				operPulsada = true;
-			}
-		};
-		bmult.addActionListener(mult);
-		
-		ActionListener div = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				igualPulsado=false;
-				oper="/";
-				operPulsada = true;
-			}
-		};
-		bdiv.addActionListener(div);
-		
-
-		ActionListener coma = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(!operPulsada) {
-					if(contComas1 > 0) {
-						JOptionPane.showMessageDialog(new JFrame(), "No puedes poner dos comas empanado!!",
-								"Fatal Error", JOptionPane.ERROR_MESSAGE);
-					} else {
-						num1+=".";
-						contComas1++;
-						txt.setText(num1);
-					}
-				} else {
-					if(contComas2 > 0) {
-						JOptionPane.showMessageDialog(new JFrame(), "No puedes poner dos comas empanado!!",
-								"Fatal Error", JOptionPane.ERROR_MESSAGE);
-					} else {
-						num2+=".";
-						contComas2++;
-						txt.setText(num2);
-					}
-				}
-			}
-		};
-		bcoma.addActionListener(coma);
-		
-		ActionListener del = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				reset();
-				igualPulsado=false;
-				num1 = "";
-				txt.setText(num1);
-			}
-		};
-		bdel.addActionListener(del);
-		
-		ActionListener raiz = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(new JFrame(), "Funcionalidad no disponible",
-						"Raiz Cuadrada", JOptionPane.INFORMATION_MESSAGE);
-			} 
-		};
-		braiz.addActionListener(raiz);
-		
-		ActionListener raiz3 = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(!puedeOperar) {
-					pass = JOptionPane.showInputDialog(new JFrame(), "Introduzca la contraseña:");
-					if(pass == null) {
-						JOptionPane.showMessageDialog(new JFrame(), "La contraseña es password",
-								"Contraseña no introducida", JOptionPane.ERROR_MESSAGE);
-						puedeOperar = false;
-					} else if(pass.equals(PASSWORD)) {
-						JOptionPane.showMessageDialog(new JFrame(), "Ya puede usar esta funcionalidad",
-									"Contraseña correcta", JOptionPane.INFORMATION_MESSAGE);
-						puedeOperar = true;
-					} else {
-						JOptionPane.showMessageDialog(new JFrame(), "La contraseña es password",
-								"Contraseña incorrecta", JOptionPane.ERROR_MESSAGE);
-						puedeOperar = false;
-					}
-				} else {
-					if(num1.equals("")) {
-						JOptionPane.showMessageDialog(new JFrame(), "Falta el operando!!",
-								"Number missing", JOptionPane.ERROR_MESSAGE);
-					}
-					igualPulsado=true;
-					res = Math.cbrt(Double.parseDouble(num1));
-					txt.setText(Double.toString(res));
-					reset();
-				}
-			}
-		};
-		braiz3.addActionListener(raiz3);
-
-		ActionListener igual = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				if(num1.equals("") || num2.equals("")) {
-					JOptionPane.showMessageDialog(new JFrame(), "Falta un operando!!",
-							"Number missing", JOptionPane.ERROR_MESSAGE);
-				} else if(oper.equals("")) {
-					JOptionPane.showMessageDialog(new JFrame(), "Falta la operación!!",
-							"Operator missing", JOptionPane.ERROR_MESSAGE);
-				} else if(oper.equals("+")) {
-					igualPulsado = true;
-					res = Double.parseDouble(num1) + Double.parseDouble(num2);
-					//txt.setText(Double.toString(res));
-					reset();
-				} else if(oper.equals("-")) {
-					igualPulsado = true;
-					res = Double.parseDouble(num1) - Double.parseDouble(num2);
-					//txt.setText(Double.toString(res));
-					reset();
-				} else if(oper.equals("*")) {
-					igualPulsado = true;
-					res = Double.parseDouble(num1) * Double.parseDouble(num2);
-					//txt.setText(Double.toString(res));
-					reset();
-				} else if(oper.equals("/")) {			
-					if(num2.equals("0")) {
-						JOptionPane.showMessageDialog(new JFrame(), "No dividas entre cero!!!",
-								"Division by zero", JOptionPane.ERROR_MESSAGE);
-					} else {
-						igualPulsado = true;
-						res = Double.parseDouble(num1) / Double.parseDouble(num2);
-						//txt.setText(Double.toString(res));
-						reset();
-					}
-				}
-			}
-		};
-		bequal.addActionListener(igual);
-		
-		ActionListener modo = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				int res = JOptionPane.showConfirmDialog(new JFrame(), "¿Desea cambiar de modo?"); 
-				switch(res) {
-					case JOptionPane.YES_OPTION: 
-						changeMode();
-						break;
-					case JOptionPane.NO_OPTION: 
-						break;
-				     default:
-				    	 break;
-				}
-			}
-		};
-		bmode.addActionListener(modo);
+		numero[0].addActionListener(gestor);
+		numero[1].addActionListener(gestor);
+		numero[2].addActionListener(gestor);
+		numero[3].addActionListener(gestor);
+		numero[4].addActionListener(gestor);
+		numero[5].addActionListener(gestor);
+		numero[6].addActionListener(gestor);
+		numero[7].addActionListener(gestor);
+		numero[8].addActionListener(gestor);
+		numero[9].addActionListener(gestor);
+		bdel.addActionListener(gestor);
+		bsuma.addActionListener(gestor);
+		bresta.addActionListener(gestor);
+		bmult.addActionListener(gestor);
+		bdiv.addActionListener(gestor);
+		braiz.addActionListener(gestor);
+		braiz3.addActionListener(gestor);
+		bcoma.addActionListener(gestor);
+		bequal.addActionListener(gestor);
+		bmode.addActionListener(gestor);
+	
 	}
 
 
-	private void reset() {
+	public void reset() {
 		operPulsada = false;
 		num1 = Double.toString(res);
 		txt.setText(num1);
@@ -427,7 +134,7 @@ public class JVentana extends JFrame {
 	/**
 	 * Cambia entre modo claro/oscuro
 	 */
-	private void changeMode() {
+	public void changeMode() {
 		if (esOscuro) {
 			getContentPane().setBackground(Color.decode("#bfbfbf"));
 			txt.claro();
@@ -510,6 +217,7 @@ public class JVentana extends JFrame {
 		return bmode;
 	}
 
+	
 	public JTexto getTxt() {
 		return txt;
 	}
@@ -517,11 +225,16 @@ public class JVentana extends JFrame {
 	public String getNum1() {
 		return num1;
 	}
-
+	public void setNum1(String valor) {
+		this.num1=valor;
+	}
+	
 	public String getNum2() {
 		return num2;
 	}
-
+	public void setNum2(String valor) {
+		this.num2=valor;
+	}
 	public double getRes() {
 		return res;
 	}
@@ -545,7 +258,49 @@ public class JVentana extends JFrame {
 	public String getPASSWORD() {
 		return PASSWORD;
 	}
-	
+
+	public int getContComas1() {
+		return contComas1;
+	}
+
+	public int getContComas2() {
+		return contComas2;
+	}
+	public void incComa1() {
+		contComas1++;
+	}
+	public void incComa2() {
+		contComas2++;
+	}
+
+	public void setOper(String oper) {
+		this.oper = oper;
+	}
+
+	public void setOperPulsada(boolean operPulsada) {
+		this.operPulsada = operPulsada;
+	}
+
+	public void setIgualPulsado(boolean igualPulsado) {
+		this.igualPulsado = igualPulsado;
+	}
+
+	public void setPuedeOperar(boolean puedeOperar) {
+		this.puedeOperar = puedeOperar;
+	}
+
+	public void setRes(double res) {
+		this.res = res;
+	}
+
+	public void setTxt(String txt) {
+		this.txt.setText(txt);
+	}
+
+	public String getOper() {
+		return oper;
+	}
+	 
 	
 	
 }
